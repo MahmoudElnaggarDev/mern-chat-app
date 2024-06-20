@@ -19,9 +19,9 @@ const getMessage = async (req, res) => {
 };
 
 const createMessage = async (req, res) => {
-  const { messageContent } = req.body;
+  const content = req.body;
   try {
-    const message = await Message.create({ messageContent });
+    const message = await Message.create(content);
     res.status(200).json(message);
   } catch (error) {
     res.status(404).json({ error: error.message });

@@ -47,7 +47,7 @@ const MessagesList = () => {
             className="w-fit pt-1 p-4 rounded-lg shadow bg-white font-bold mt-4"
             key={message._id}
           >
-            <p className="mt-3">{message.messageContent.message}</p>
+            <p className="mt-3">{message.content}</p>
             <div className="flex justify-between items-center mt-3 gap-6">
               <p className="text-right text-sm text-gray-400">
                 {formatDistanceToNow(new Date(message.createdAt), {

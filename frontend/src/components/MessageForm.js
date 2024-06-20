@@ -3,22 +3,22 @@ import { useMessagesContext } from "../hooks/useMessagesContext";
 import { useEffect, useState } from "react";
 
 const MessageForm = () => {
-  const [message, setMessage] = useState("");
+  const [content, setContent] = useState("");
   const { dispatch } = useMessagesContext();
 
   useEffect(() => {
     window.scrollTo(0, document.body.scrollHeight);
-  }, [message]);
+  }, [content]);
 
   const sendMessage = async (e) => {
     e.preventDefault();
 
-    if (message) {
-      const messageContent = { message };
+    if (content) {
+      const message = { content };
 
       const response = await fetch("/api/messages", {
         method: "POST",
-        body: JSON.stringify({ messageContent }),
+        body: JSON.stringify(message),
         headers: {
           "Content-Type": "application/json",
         },
@@ -30,7 +30,7 @@ const MessageForm = () => {
         console.log(json.error);
       }
       if (response.ok) {
-        setMessage("");
+        setContent("");
         dispatch({ type: "CREATE_MESSAGE", payload: json });
       }
     }
@@ -41,8 +41,8 @@ const MessageForm = () => {
       <input
         type="text"
         placeholder="Message"
-        onChange={(e) => setMessage(e.target.value)}
-        value={message}
+        onChange={(e) => setContent(e.target.value)}
+        value={content}
         className="w-full bg-[#eeeeee] rounded-md py-2 px-4 md:py-4 md:px-8 font-bold text-gray-600 outline-none focus:ring focus:ring-blue-500 duration-150"
       />
       <button

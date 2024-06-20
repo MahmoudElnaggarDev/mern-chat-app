@@ -1,4 +1,4 @@
-import MessageForm from "./components/Messageform";
+import MessageForm from "./components/MessageForm";
 import MessagesList from "./components/MessagesList";
 
 const App = () => {
