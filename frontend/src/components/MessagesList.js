@@ -39,7 +39,7 @@ const MessagesList = () => {
   };
 
   return (
-    <div className="pt-6 pb-24 md:pb-36 px-6 md:px-24 lg:px-52">
+    <div className="pt-6 pb-24 md:pb-36 px-6 md:px-24 lg:px-52 overflow-hidden">
       {messages &&
         messages.map((message) => (
           <div
